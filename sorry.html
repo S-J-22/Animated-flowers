@@ -29,33 +29,18 @@
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
-        }
-
-        .cursor {
-            display: inline-block;
-            background-color: red;
-            width: 3px;
-            height: 1em;
-            vertical-align: bottom;
-            margin-left: 5px;
-            animation: blink-caret 0.75s step-end infinite;
+            animation: typing 4s steps(40, end);
         }
 
         @keyframes typing {
             from { width: 0; }
             to { width: 100%; }
         }
-
-        @keyframes blink-caret {
-            from, to { background-color: transparent; }
-            50% { background-color: red; }
-        }
     </style>
 </head>
 <body>
     <div class="centered-text">
-        <span class="typing-effect">I'm sorry</span><span class="cursor"></span>
+        <span class="typing-effect">I'm sorry</span>
     </div>
 </body>
 </html>
