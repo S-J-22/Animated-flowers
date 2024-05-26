@@ -1,110 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Rose</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #e0f7fa;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Night and Flowers</title>
+  <style>
+    *,
+    *::after,
+    *::before {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
 
-        .rose-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-        }
+    :root {
+      --dark-color: #000;
+    }
 
-        .rose {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            animation: bloom 5s infinite alternate;
-        }
+    body {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: var(--dark-color);
+      overflow: hidden;
+      perspective: 1000px;
+    }
 
-        .petal {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle at 50% 50%, #ff007f 10%, #ff4d94 50%, transparent 70%);
-            border-radius: 50%;
-        }
+    .night {
+      position: fixed;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 100%;
+    }
 
-        .petal:nth-child(1) {
-            transform: rotate(0deg);
-        }
+    .flowers {
+      display: flex;
+    }
 
-        .petal:nth-child(2) {
-            transform: rotate(45deg);
-        }
+    .flower {
+      position: relative;
+    }
 
-        .petal:nth-child(3) {
-            transform: rotate(90deg);
-        }
+    .flower__leafs {
+      position: relative;
+    }
 
-        .petal:nth-child(4) {
-            transform: rotate(135deg);
-        }
+    .flower__leaf {
+      width: 50px;
+      height: 100px;
+      background: #fff;
+    }
 
-        .petal:nth-child(5) {
-            transform: rotate(180deg);
-        }
+    .flower__white-circle {
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 40px;
+      left: 15px;
+    }
 
-        .petal:nth-child(6) {
-            transform: rotate(225deg);
-        }
-
-        .petal:nth-child(7) {
-            transform: rotate(270deg);
-        }
-
-        .petal:nth-child(8) {
-            transform: rotate(315deg);
-        }
-
-        .center {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle at 50% 50%, #ff4d94 10%, #ff007f 50%, transparent 70%);
-            border-radius: 50%;
-            top: 30px;
-            left: 30px;
-        }
-
-        @keyframes bloom {
-            from {
-                transform: scale(0.8);
-            }
-            to {
-                transform: scale(1);
-            }
-        }
-    </style>
+    .flower__light {
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      position: absolute;
+    }
+  </style>
 </head>
-<body>
-    <div class="rose-container">
-        <div class="rose">
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="center"></div>
-        </div>
+<body class="not-loaded">
+  <div class="night"></div>
+  <div class="flowers">
+    <div class="flower flower--1">
+      <div class="flower__leafs flower__leafs--1">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+      </div>
     </div>
-
-    <script>
-        // Currently, no JavaScript is needed for this simple animation.
-        // You can add interactivity here if desired.
-    </script>
+  </div>
+  <script>
+    onload = () => {
+      const c = setTimeout(() => {
+        document.body.classList.remove("not-loaded");
+        clearTimeout(c);
+      }, 1000);
+    };
+  </script>
 </body>
 </html>
