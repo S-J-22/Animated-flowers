@@ -14,14 +14,13 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: Arial, sans-serif;
-            color: white;
+            font-family: "Courier New", Courier, monospace;
+            color: lime;
             position: relative;
         }
 
         .centered-text {
             text-align: center;
-            color: red;
             font-size: 2em;
         }
 
@@ -29,12 +28,18 @@
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            animation: typing 4s steps(40, end);
+            border-right: 3px solid lime; /* The cursor */
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
         }
 
         @keyframes typing {
             from { width: 0; }
             to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: lime; }
         }
     </style>
 </head>
