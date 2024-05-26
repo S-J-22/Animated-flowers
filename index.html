@@ -117,8 +117,7 @@
 <body>
     <div class="centered-text">
         <p class="floating-text">Hi Jasmine</p>
-        <button class="next-button" onclick="showMessage()">Open</button>
-        <p id="sorry-message" style="display:none; color:red;">I'm sorry</p>
+        <button class="next-button" onclick="window.location.href='sorry.html'">Open</button>
     </div>
     <script>
         function createHeart() {
@@ -134,10 +133,6 @@
         }
 
         setInterval(createHeart, 500);
-
-        function showMessage() {
-            document.getElementById('sorry-message').style.display = 'block';
-        }
     </script>
 </body>
 </html>
