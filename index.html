@@ -7,8 +7,7 @@
     <style>
         body {
             background-color: black;
-            overflow-x: hidden; /* Hide overflow to prevent horizontal scrollbar */
-            overflow-y: visible; /* Allow vertical overflow for hearts animation */
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
             margin: 0;
             padding: 0;
             display: flex;
@@ -117,7 +116,8 @@
         function createHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart';
-            heart.style.left = Math.random() * 100 + 'vw';
+            // Ensure the hearts do not go beyond the borders
+            heart.style.left = Math.random() * (window.innerWidth - 40) + 'px';
             heart.style.animationDuration = Math.random() * 2 + 3 + 's';
             document.body.appendChild(heart);
 
