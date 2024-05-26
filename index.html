@@ -9,6 +9,7 @@
             background-color: black;
             color: white;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -17,12 +18,42 @@
 
         .centered-text {
             text-align: center;
+            margin-bottom: 20px;
+            position: relative; /* Make it relative to enable animation */
+        }
+
+        .floating-text {
+            animation: floatAnimation 3s ease-in-out infinite; /* Define animation */
+        }
+
+        @keyframes floatAnimation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); } /* Float up */
+            100% { transform: translateY(0); }
+        }
+
+        .next-button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .next-button:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
 <body>
     <div class="centered-text">
-        <p>Hi Jasmine</p>
+        <p class="floating-text">Hi Jasmine</p>
+        <button class="next-button" onclick="window.location.href='next_page.html'">Next Page</button>
     </div>
 </body>
 </html>
