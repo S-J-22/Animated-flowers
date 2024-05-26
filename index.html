@@ -10,40 +10,49 @@
             overflow: hidden; /* Hide overflow to prevent horizontal scrollbars */
             margin: 0;
             padding: 0;
-            animation: starsAnimation 20s linear infinite; /* Background animation */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
         }
 
         @keyframes starsAnimation {
             0% {
-                background: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.1) 1%, transparent 3%), 
-                            radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
-                            #000;
-                background-size: 50px 50px; /* Size of stars */
+                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
+                            black;
+                background-size: 50px 50px, 50px 50px;
                 background-position: 0 0, 100px 100px;
             }
             50% {
-                background: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.1) 1%, transparent 3%), 
-                            radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
-                            #000;
-                background-size: 50px 50px;
-                background-position: 50px 50px, -50px -50px;
+                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
+                            black;
+                background-size: 50px 50px, 50px 50px;
+                background-position: 50px 50px, 150px 150px;
             }
             100% {
-                background: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.1) 1%, transparent 3%), 
-                            radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
-                            #000;
-                background-size: 50px 50px;
+                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
+                            black;
+                background-size: 50px 50px, 50px 50px;
                 background-position: 0 0, 100px 100px;
             }
+        }
+
+        body {
+            animation: starsAnimation 20s linear infinite;
         }
 
         .centered-text {
             text-align: center;
-            margin-top: 20vh; /* Adjust the vertical position of the text */
+            margin: 0 10%;
         }
 
         .floating-text {
-            animation: floatAnimation 3s ease-in-out infinite; /* Floating animation */
+            animation: floatAnimation 3s ease-in-out infinite;
         }
 
         @keyframes floatAnimation {
@@ -67,6 +76,17 @@
 
         .next-button:hover {
             background-color: #ddd;
+        }
+
+        @media (max-width: 600px) {
+            .next-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .floating-text {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
