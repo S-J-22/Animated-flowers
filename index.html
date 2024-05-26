@@ -117,23 +117,27 @@
 <body>
     <div class="centered-text">
         <p class="floating-text">Hi Jasmine</p>
-        <button class="next-button" onclick="window.location.href='next_page.html'">Open</button>
+        <button class="next-button" onclick="showMessage()">Open</button>
+        <p id="sorry-message" style="display:none; color:red;">I'm sorry</p>
     </div>
     <script>
         function createHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart';
-            // Ensure the hearts do not go beyond the borders
             heart.style.left = Math.random() * (window.innerWidth - 40) + 'px';
             heart.style.animationDuration = Math.random() * 2 + 3 + 's';
             document.body.appendChild(heart);
 
             setTimeout(() => {
                 heart.remove();
-            }, 5000); // Match the duration of the animation
+            }, 5000);
         }
 
-        setInterval(createHeart, 500); // Create a new heart every 0.5 seconds
+        setInterval(createHeart, 500);
+
+        function showMessage() {
+            document.getElementById('sorry-message').style.display = 'block';
+        }
     </script>
 </body>
 </html>
