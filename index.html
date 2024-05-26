@@ -57,6 +57,7 @@
             height: 20px;
             background-color: red;
             position: absolute;
+            bottom: -20px; /* Start slightly off-screen */
             transform: rotate(45deg);
             animation: animateHeart 5s linear infinite;
         }
@@ -83,11 +84,12 @@
 
         @keyframes animateHeart {
             0% {
+                bottom: -20px;
                 opacity: 1;
                 transform: rotate(45deg) scale(1);
             }
             100% {
-                top: -100px;
+                bottom: 100vh; /* Move to top of the viewport */
                 opacity: 0;
                 transform: rotate(45deg) scale(0.5);
             }
