@@ -16,34 +16,31 @@
             height: 100vh;
             font-family: Arial, sans-serif;
             color: white;
+            animation: starsAnimation 20s linear infinite; /* Background animation */
         }
 
         @keyframes starsAnimation {
             0% {
-                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
-                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
+                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 2%, transparent 4%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.3) 2%, transparent 4%),
                             black;
-                background-size: 50px 50px, 50px 50px;
-                background-position: 0 0, 100px 100px;
+                background-size: 100px 100px, 100px 100px;
+                background-position: 0 0, 200px 200px;
             }
             50% {
-                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
-                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
+                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 2%, transparent 4%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.3) 2%, transparent 4%),
                             black;
-                background-size: 50px 50px, 50px 50px;
-                background-position: 50px 50px, 150px 150px;
+                background-size: 100px 100px, 100px 100px;
+                background-position: 100px 100px, 300px 300px;
             }
             100% {
-                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
-                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1%, transparent 3%),
+                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 2%, transparent 4%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.3) 2%, transparent 4%),
                             black;
-                background-size: 50px 50px, 50px 50px;
-                background-position: 0 0, 100px 100px;
+                background-size: 100px 100px, 100px 100px;
+                background-position: 0 0, 200px 200px;
             }
-        }
-
-        body {
-            animation: starsAnimation 20s linear infinite;
         }
 
         .centered-text {
@@ -78,6 +75,45 @@
             background-color: #ddd;
         }
 
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(45deg, white, transparent);
+            opacity: 0.5;
+            transform: rotate(45deg);
+            animation: shootingStar 2s linear infinite;
+        }
+
+        @keyframes shootingStar {
+            0% {
+                top: -10%;
+                left: -10%;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                left: 110%;
+                opacity: 0;
+            }
+        }
+
+        /* Additional shooting stars */
+        .shooting-star:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .shooting-star:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .shooting-star:nth-child(4) {
+            animation-delay: 3s;
+        }
+
         @media (max-width: 600px) {
             .next-button {
                 padding: 8px 16px;
@@ -95,5 +131,9 @@
         <p class="floating-text">Hi Jasmine</p>
         <button class="next-button" onclick="window.location.href='next_page.html'">Next Page</button>
     </div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
 </body>
 </html>
