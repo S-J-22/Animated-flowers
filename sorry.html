@@ -24,12 +24,13 @@
             text-align: center;
             font-size: 1.5em;
             line-height: 1.5;
+            word-wrap: break-word; /* Allow long words to break */
+            white-space: pre-wrap; /* Preserve new lines */
         }
 
         .typing-effect {
             display: inline-block;
             overflow: hidden;
-            white-space: nowrap;
             border-right: 3px solid lime; /* The cursor */
             animation: typing 10s steps(100, end), blink-caret 0.75s step-end infinite;
         }
