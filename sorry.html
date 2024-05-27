@@ -40,6 +40,7 @@
         }
 
         .continue-button {
+            display: none; /* Initially hidden */
             padding: 10px 20px;
             font-size: 1em;
             color: black;
@@ -76,5 +77,12 @@
         <span class="typing-effect">I'm sorry for annoying, and pressuring you. Those weren't my intentions. It's been a while since that whole situation, but it's still in my head. I have had a thing for you, for a long time and I still do. I know I've probably ruined any chances of us being an item. However, I want you to know that my feelings are true and genuine.</span>
     </div>
     <button class="continue-button" onclick="location.href='nextpage.html'">Continue</button>
+    <script>
+        // Stop the cursor blink after the typing animation is complete and show the button
+        setTimeout(() => {
+            document.querySelector('.typing-effect').style.borderRight = 'none';
+            document.querySelector('.continue-button').style.display = 'block';
+        }, 10000); // Matches the duration of the typing animation
+    </script>
 </body>
 </html>
