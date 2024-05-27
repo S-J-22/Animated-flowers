@@ -78,6 +78,7 @@
             background-color: red;
             transform: rotate(45deg);
             animation: floatHeart 5s infinite ease-in;
+            opacity: 0; /* Start with opacity 0 */
         }
 
         .heart::before, .heart::after {
@@ -137,18 +138,23 @@
             document.body.appendChild(heart);
 
             // Randomize the position and animation duration of hearts
-            const randomLeft = Math.random() * 100;
-            const randomBottom = Math.random() * 100;
+            const randomLeft = Math.random() * window.innerWidth;
+            const randomBottom = Math.random() * window.innerHeight;
             const randomDuration = Math.random() * 2 + 3;
 
-            heart.style.left = randomLeft + 'vw';
-            heart.style.bottom = randomBottom + 'vh';
+            heart.style.left = randomLeft + 'px';
+            heart.style.bottom = randomBottom + 'px';
             heart.style.animationDuration = randomDuration + 's';
+
+            // Fade in heart
+            setTimeout(() => {
+                heart.style.opacity = 1;
+            }, 100); // Delay to ensure the heart is fully rendered before fading in
 
             // Remove heart element after animation completes
             setTimeout(() => {
                 heart.remove();
-            }, randomDuration * 1000);
+            }, (randomDuration + 2) * 1000); // Add 2 seconds to animation duration for a delay before removing
         }
 
         // Create hearts at regular intervals
