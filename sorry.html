@@ -40,7 +40,6 @@
         }
 
         .continue-button {
-            display: none; /* Initially hidden */
             padding: 10px 20px;
             font-size: 1em;
             color: black;
@@ -70,53 +69,6 @@
             0%, 100% { box-shadow: 0 0 5px red; }
             50% { box-shadow: 0 0 20px red; }
         }
-
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: red;
-            transform: rotate(45deg);
-            animation: floatHeart 5s infinite ease-in;
-            opacity: 0; /* Start with opacity 0 */
-        }
-
-        .heart::before, .heart::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: red;
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -10px;
-            left: 0;
-        }
-
-        .heart::after {
-            left: 10px;
-            top: 0;
-        }
-
-        @keyframes floatHeart {
-            0% {
-                opacity: 0;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%) rotate(45deg);
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                bottom: 100%;
-                left: 50%;
-                transform: translateX(-50%) rotate(45deg);
-            }
-        }
     </style>
 </head>
 <body>
@@ -124,41 +76,5 @@
         <span class="typing-effect">I'm sorry for annoying, and pressuring you. Those weren't my intentions. It's been a while since that whole situation, but it's still in my head. I have had a thing for you, for a long time and I still do. I know I've probably ruined any chances of us being an item. However, I want you to know that my feelings are true and genuine.</span>
     </div>
     <button class="continue-button" onclick="location.href='nextpage.html'">Continue</button>
-    <script>
-        // Stop the cursor blink after the typing animation is complete and show the button
-        setTimeout(() => {
-            document.querySelector('.typing-effect').style.borderRight = 'none';
-            document.querySelector('.continue-button').style.display = 'block';
-        }, 10000); // Matches the duration of the typing animation
-
-        // Create heart elements and animate them
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            document.body.appendChild(heart);
-
-            // Randomize the position and animation duration of hearts
-            const randomLeft = Math.random() * window.innerWidth;
-            const randomBottom = Math.random() * window.innerHeight;
-            const randomDuration = Math.random() * 2 + 3;
-
-            heart.style.left = randomLeft + 'px';
-            heart.style.bottom = randomBottom + 'px';
-            heart.style.animationDuration = randomDuration + 's';
-
-            // Fade in heart
-            setTimeout(() => {
-                heart.style.opacity = 1;
-            }, 100); // Delay to ensure the heart is fully rendered before fading in
-
-            // Remove heart element after animation completes
-            setTimeout(() => {
-                heart.remove();
-            }, (randomDuration + 2) * 1000); // Add 2 seconds to animation duration for a delay before removing
-        }
-
-        // Create hearts at regular intervals
-        setInterval(createHeart, 300);
-    </script>
 </body>
 </html>
