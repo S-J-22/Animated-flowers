@@ -138,9 +138,11 @@
 
             // Randomize the position and animation duration of hearts
             const randomLeft = Math.random() * 100;
+            const randomBottom = Math.random() * 100;
             const randomDuration = Math.random() * 2 + 3;
 
             heart.style.left = randomLeft + 'vw';
+            heart.style.bottom = randomBottom + 'vh';
             heart.style.animationDuration = randomDuration + 's';
 
             // Remove heart element after animation completes
