@@ -7,7 +7,6 @@
     <style>
         body {
             background-color: black;
-            overflow: hidden; /* Hide overflow to prevent scrollbars */
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,16 +14,17 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: "Courier New", Courier, monospace;
-            color: lime;
+            font-family: Arial, sans-serif;
+            color: white;
             position: relative;
+            overflow: hidden;
         }
 
         .centered-text {
             width: 90%; /* Adjust width to contain long paragraphs and fit smaller screens */
             max-width: 600px; /* Maximum width for larger screens */
             text-align: center;
-            font-size: 1.2em;
+            font-size: 1.5em;
             line-height: 1.5;
             word-wrap: break-word; /* Allow long words to break */
             white-space: pre-wrap; /* Preserve new lines */
@@ -34,7 +34,7 @@
         .typing-effect {
             display: inline-block;
             overflow: hidden;
-            border-right: 3px solid lime; /* The cursor */
+            border-right: 3px solid white; /* The cursor */
             animation: typing 10s steps(100, end), blink-caret 0.75s step-end infinite;
         }
 
@@ -43,7 +43,7 @@
             padding: 10px 20px;
             font-size: 1em;
             color: black;
-            background-color: lime;
+            background-color: red;
             border: none;
             cursor: pointer;
             border-radius: 5px;
@@ -57,7 +57,7 @@
 
         @keyframes blink-caret {
             from, to { border-color: transparent; }
-            50% { border-color: lime; }
+            50% { border-color: white; }
         }
 
         @keyframes slide-in {
