@@ -126,8 +126,10 @@
     <div class="centered-text">
         <span class="typing-effect" id="typing-text"></span>
     </div>
-    <textarea class="response-box" id="response-box" placeholder="Your response here..."></textarea>
-    <button class="submit-button" onclick="submitResponse()">Send</button>
+    <form action="send_email.php" method="post">
+        <textarea class="response-box" id="response-box" name="response" placeholder="Your response here..."></textarea>
+        <button type="submit" class="submit-button">Send</button>
+    </form>
     <div class="hearts" id="hearts-container"></div>
     <script>
         const text = "Can we work something out?";
@@ -167,26 +169,6 @@
         }
 
         setInterval(createHeart, 300);
-
-        function submitResponse() {
-            const response = document.getElementById('response-box').value;
-            if (response) {
-                localStorage.setItem('userResponse', response);
-                clearResponseBox();
-                displayThankYou();
-            }
-        }
-
-        function clearResponseBox() {
-            document.getElementById('response-box').value = '';
-        }
-
-        function displayThankYou() {
-            const thankYouMessage = document.createElement('div');
-            thankYouMessage.innerText = 'Thank You';
-            thankYouMessage.classList.add('centered-text');
-            document.body.appendChild(thankYouMessage);
-        }
     </script>
 </body>
 </html>
