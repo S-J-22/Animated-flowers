@@ -126,8 +126,8 @@
     <div class="centered-text">
         <span class="typing-effect" id="typing-text"></span>
     </div>
-    <textarea class="response-box" placeholder="Your response here..."></textarea>
-    <button class="submit-button">Send</button>
+    <textarea class="response-box" id="response-box" placeholder="Your response here..."></textarea>
+    <button class="submit-button" onclick="submitResponse()">Send</button>
     <div class="hearts" id="hearts-container"></div>
     <script>
         const text = "Can we work something out?";
@@ -167,6 +167,14 @@
         }
 
         setInterval(createHeart, 300);
+
+        function submitResponse() {
+            const response = document.getElementById('response-box').value;
+            if (response) {
+                localStorage.setItem('userResponse', response);
+                window.location.href = 'thankyou.html';
+            }
+        }
     </script>
 </body>
 </html>
