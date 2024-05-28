@@ -3,135 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Can We Work Something Out?</title>
-    <style>
-        body {
-            background-color: black;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            color: white;
-            position: relative;
-            overflow: hidden; /* Prevent scrollbars */
-        }
-
-        .centered-text {
-            width: 90%; /* Adjust width to contain long paragraphs and fit smaller screens */
-            max-width: 600px; /* Maximum width for larger screens */
-            text-align: center;
-            font-size: 1.5em;
-            line-height: 1.5;
-            word-wrap: break-word; /* Allow long words to break */
-            white-space: pre-wrap; /* Preserve new lines */
-            color: red;
-            overflow-wrap: break-word; /* Ensure the text wraps to fit within the container */
-            margin-bottom: 20px;
-        }
-
-        .typing-effect {
-            display: inline-block;
-            overflow: hidden;
-            border-right: 3px solid red; /* The cursor */
-            animation: blink-caret 0.75s step-end infinite;
-        }
-
-        .response-box {
-            width: 90%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .response-box textarea {
-            width: 100%;
-            height: 100px;
-            padding: 10px;
-            font-size: 1em;
-            border-radius: 5px;
-            border: 2px solid red;
-            background-color: black;
-            color: white;
-            resize: none;
-            margin-bottom: 10px;
-        }
-
-        .response-box button {
-            padding: 10px 20px;
-            font-size: 1em;
-            color: black;
-            background-color: red;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            animation: sparkle 1s infinite; /* Sparkle animation */
-        }
-
-        .hearts {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .heart {
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            background-color: red;
-            transform: rotate(-45deg);
-            animation: floatUp 5s infinite;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: '';
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            background-color: red;
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -10px;
-            left: 0;
-        }
-
-        .heart::after {
-            left: 10px;
-            top: 0;
-        }
-
-        @keyframes floatUp {
-            0% {
-                bottom: 0;
-                opacity: 1;
-            }
-            100% {
-                bottom: 100vh;
-                opacity: 0;
-            }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: red; }
-        }
-
-        @keyframes sparkle {
-            0%, 100% { box-shadow: 0 0 5px red; }
-            50% { box-shadow: 0 0 20px red; }
-        }
-    </style>
+    <title>Response</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="centered-text">
@@ -142,39 +15,12 @@
         <button>Send</button>
     </div>
     <div class="hearts" id="hearts-container"></div>
+    <script src="script.js"></script>
     <script>
         const text = "Can we work something out?";
-        let index = 0;
-        const speed = 100; // Typing speed in milliseconds
-        const typingText = document.getElementById('typing-text');
-
-        function typeWriter() {
-            if (index < text.length) {
-                typingText.innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, speed);
-            } else {
-                typingText.style.borderRight = 'none';
-            }
-        }
-
-        typeWriter();
-
-        const heartsContainer = document.getElementById('hearts-container');
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = `${Math.random() * 100}vw`;
-            heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
-            heartsContainer.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }
-
-        setInterval(createHeart, 300);
+        typeWriter(text, 'typing-text', () => {
+            // Optionally, you can add any additional behavior after typing is complete
+        });
     </script>
 </body>
 </html>
