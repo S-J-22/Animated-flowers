@@ -36,7 +36,7 @@
             display: inline-block;
             overflow: hidden;
             border-right: 3px solid red; /* The cursor */
-            animation: typing 10s steps(100, end), blink-caret 0.75s step-end infinite;
+            white-space: nowrap;
         }
 
         .continue-button {
@@ -49,11 +49,6 @@
             cursor: pointer;
             border-radius: 5px;
             animation: sparkle 1s infinite, slide-in 1s forwards; /* Slide-in and sparkle animation */
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
         }
 
         @keyframes blink-caret {
@@ -74,15 +69,27 @@
 </head>
 <body>
     <div class="centered-text">
-        <span class="typing-effect">Everyday passes, and I miss you more and more. Though it might not be the same for you, I keep hoping that it is. There's nothing that I want more, than the chance to be with you.</span>
+        <span class="typing-effect" id="typing-text"></span>
     </div>
     <button class="continue-button" onclick="location.href='nextpage.html'">Continue</button>
     <script>
-        // Stop the cursor blink after the typing animation is complete and show the button
-        setTimeout(() => {
-            document.querySelector('.typing-effect').style.borderRight = 'none';
-            document.querySelector('.continue-button').style.display = 'block';
-        }, 10000); // Matches the duration of the typing animation
+        const text = "Everyday passes, and I miss you more and more. Though it might not be the same for you, I keep hoping that it is. There's nothing that I want more, than the chance to be with you.";
+        let index = 0;
+        const speed = 100; // Typing speed in milliseconds
+        const typingText = document.getElementById('typing-text');
+
+        function typeWriter() {
+            if (index < text.length) {
+                typingText.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            } else {
+                typingText.style.borderRight = 'none';
+                document.querySelector('.continue-button').style.display = 'block';
+            }
+        }
+
+        typeWriter();
     </script>
 </body>
 </html>
