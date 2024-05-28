@@ -4,93 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I'm Sorry</title>
-    <style>
-        body {
-            background-color: black;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            color: white;
-            position: relative;
-            overflow: hidden; /* Prevent scrollbars */
-        }
-
-        .centered-text {
-            width: 90%; /* Adjust width to contain long paragraphs and fit smaller screens */
-            max-width: 600px; /* Maximum width for larger screens */
-            text-align: center;
-            font-size: 1.5em;
-            line-height: 1.5;
-            word-wrap: break-word; /* Allow long words to break */
-            white-space: pre-wrap; /* Preserve new lines */
-            color: red;
-            overflow-wrap: break-word; /* Ensure the text wraps to fit within the container */
-        }
-
-        .typing-effect {
-            display: inline-block;
-            overflow: hidden;
-            border-right: 3px solid red; /* The cursor */
-            animation: blink-caret 0.75s step-end infinite;
-        }
-
-        .continue-button {
-            display: none; /* Initially hidden */
-            padding: 10px 20px;
-            font-size: 1em;
-            color: black;
-            background-color: red;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            animation: sparkle 1s infinite, slide-in 1s forwards; /* Slide-in and sparkle animation */
-            margin-top: 20px;
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: red; }
-        }
-
-        @keyframes slide-in {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        @keyframes sparkle {
-            0%, 100% { box-shadow: 0 0 5px red; }
-            50% { box-shadow: 0 0 20px red; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="centered-text">
         <span class="typing-effect" id="typing-text"></span>
     </div>
-    <button class="continue-button" onclick="location.href='finalpage.html'">Continue</button>
+    <button class="continue-button" onclick="location.href='page3.html'">Continue</button>
+    <div class="hearts" id="hearts-container"></div>
+    <script src="script.js"></script>
     <script>
-        const text = "Everyday passes, and I miss you more and more. Though it might not be the same for you, I keep hoping that it is. There's nothing that I want more, than the chance to be with you.";
-        let index = 0;
-        const speed = 100; // Typing speed in milliseconds
-        const typingText = document.getElementById('typing-text');
-
-        function typeWriter() {
-            if (index < text.length) {
-                typingText.innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, speed);
-            } else {
-                typingText.style.borderRight = 'none';
-                document.querySelector('.continue-button').style.display = 'block';
-            }
-        }
-
-        typeWriter();
+        const text = "I'm sorry for annoying, and pressuring you. Those weren't my intentions. It's been a while since that whole situation, but it's still in my head. I have had a thing for you, for a long time and I still do. I know I've probably ruined any chances of us being an item. However, I want you to know that my feelings are true and genuine.";
+        typeWriter(text, 'typing-text', () => {
+            document.querySelector('.continue-button').style.display = 'block';
+        });
     </script>
 </body>
 </html>
