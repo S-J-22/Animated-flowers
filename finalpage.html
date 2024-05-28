@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Can we work something out?</title>
+    <title>I'm Sorry</title>
     <style>
         body {
             background-color: black;
@@ -30,7 +30,9 @@
             word-wrap: break-word;
             white-space: pre-wrap;
             color: red;
-            margin-bottom: 20px; /* Space for the input box */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .typing-effect {
@@ -38,6 +40,19 @@
             overflow: hidden;
             border-right: 3px solid red;
             animation: blink-caret 0.75s step-end infinite;
+        }
+
+        .continue-button {
+            display: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: black;
+            background-color: red;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            animation: sparkle 1s infinite, slide-in 1s forwards;
+            margin-top: 20px;
         }
 
         @keyframes blink-caret {
@@ -48,6 +63,11 @@
         @keyframes sparkle {
             0%, 100% { box-shadow: 0 0 5px red; }
             50% { box-shadow: 0 0 20px red; }
+        }
+
+        @keyframes slide-in {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
         }
 
         .hearts {
@@ -98,42 +118,19 @@
                 opacity: 0;
             }
         }
-
-        .response-box {
-            width: 80%;
-            max-width: 600px;
-            padding: 10px;
-            font-size: 1em;
-            margin-top: 20px;
-            border: 1px solid red;
-            border-radius: 5px;
-        }
-
-        .submit-button {
-            padding: 10px 20px;
-            font-size: 1em;
-            color: black;
-            background-color: red;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-            animation: sparkle 1s infinite;
-        }
     </style>
 </head>
 <body>
     <div class="centered-text">
         <span class="typing-effect" id="typing-text"></span>
     </div>
-    <form action="send_email.php" method="post">
-        <textarea class="response-box" id="response-box" name="response" placeholder="Your response here..."></textarea>
-        <button type="submit" class="submit-button">Send</button>
-    </form>
+    <button class="continue-button" onclick="location.href='Continue.html'">Continue</button>
     <div class="hearts" id="hearts-container"></div>
     <script>
-        const text = "Can we work something out?";
-        typeWriter(text, 'typing-text');
+        const text = "I'm sorry for annoying, and pressuring you. Those weren't my intentions. It's been a while since that whole situation, but it's still in my head. I have had a thing for you, for a long time and I still do. I know I've probably ruined any chances of us being an item. However, I want you to know that my feelings are true and genuine.";
+        typeWriter(text, 'typing-text', () => {
+            document.querySelector('.continue-button').style.display = 'block';
+        });
 
         function typeWriter(text, elementId, callback) {
             let index = 0;
