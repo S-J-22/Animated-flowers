@@ -1,6 +1,6 @@
 <?php
 // Set the recipient email address
-$to = "recipient@example.com";
+$to = "smngomezulu918@gmail.com";
 
 // Get the user's response from the form
 $response = $_POST['response'];
