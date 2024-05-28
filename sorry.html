@@ -18,6 +18,7 @@
             color: white;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .centered-text {
@@ -123,7 +124,7 @@
     <div class="centered-text">
         <span class="typing-effect" id="typing-text"></span>
     </div>
-    <button class="continue-button" onclick="location.href='Continue.html'">Continue</button>
+    <button class="continue-button" onclick="location.href='page3.html'">Continue</button>
     <div class="hearts" id="hearts-container"></div>
     <script>
         const text = "I'm sorry for annoying, and pressuring you. Those weren't my intentions. It's been a while since that whole situation, but it's still in my head. I have had a thing for you, for a long time and I still do. I know I've probably ruined any chances of us being an item. However, I want you to know that my feelings are true and genuine.";
@@ -156,4 +157,15 @@
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.style.left = `${Math.random() * 100}vw`;
-           
+            heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
