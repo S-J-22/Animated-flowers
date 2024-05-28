@@ -4,20 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I'm Sorry</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .centered-text {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            font-size: 1.5em;
+            line-height: 1.5;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .typing-effect {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid red;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        .continue-button {
+            display: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: black;
+            background-color: red;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            animation: sparkle 1s infinite, slide-in 1s forwards;
+            margin-top: 20px;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: red; }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { box-shadow: 0 0 5px red; }
+            50% { box-shadow: 0 0 20px red; }
+        }
+
+        @keyframes slide-in {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .hearts {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .heart {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: floatUp 5s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                bottom: 0;
+                opacity: 1;
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="centered-text">
         <span class="typing-effect" id="typing-text"></span>
     </div>
-    <button class="continue-button" onclick="location.href='Continue.html'">Continue</button>
+    <button class="continue-button" onclick="location.href='page3.html'">Continue</button>
     <div class="hearts" id="hearts-container"></div>
-    <script src="script.js"></script>
     <script>
         const text = "I'm sorry for annoying, and pressuring you. Those weren't my intentions. It's been a while since that whole situation, but it's still in my head. I have had a thing for you, for a long time and I still do. I know I've probably ruined any chances of us being an item. However, I want you to know that my feelings are true and genuine.";
         typeWriter(text, 'typing-text', () => {
             document.querySelector('.continue-button').style.display = 'block';
         });
-    </script>
-</body>
-</html>
+
+        function typeWriter(text, elementId, callback) {
+            let index = 0;
+            const speed = 100;
+            const typingText = document.getElementById(elementId);
+
+            function type() {
+                if (index < text.length) {
+                    typingText.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(type, speed);
+                } else {
+                    typingText.style.borderRight = 'none';
+                    if (callback) callback();
+                }
+            }
+
+            type();
+        }
+
+        const heartsContainer = document.getElementById('hearts-container');
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = `${Math.random() * 100}vw`;
+           
