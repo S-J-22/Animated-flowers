@@ -172,8 +172,20 @@
             const response = document.getElementById('response-box').value;
             if (response) {
                 localStorage.setItem('userResponse', response);
-                window.location.href = 'thankyou.html';
+                clearResponseBox();
+                displayThankYou();
             }
+        }
+
+        function clearResponseBox() {
+            document.getElementById('response-box').value = '';
+        }
+
+        function displayThankYou() {
+            const thankYouMessage = document.createElement('div');
+            thankYouMessage.innerText = 'Thank You';
+            thankYouMessage.classList.add('centered-text');
+            document.body.appendChild(thankYouMessage);
         }
     </script>
 </body>
